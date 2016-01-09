@@ -19,3 +19,9 @@ exports['get tag from element with spaces'] = function (test) {
     
     test.equal(element.tag(), "tag");
 };
+
+exports['get element with offset'] = function (test) {
+    var element = elements.element("<tag></tag><tag2></tag2>", 11);
+    
+    test.equal(element.tag(), "tag2");
+};
