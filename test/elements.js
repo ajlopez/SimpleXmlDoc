@@ -8,10 +8,11 @@ exports['get element'] = function (test) {
     test.equal(typeof element, 'object');
 };
 
-exports['get tag'] = function (test) {
+exports['get tag and name'] = function (test) {
     var element = elements.element("<tag></tag>");
     
     test.equal(element.tag(), "tag");
+    test.equal(element.name(), "tag");
 };
 
 exports['no elements'] = function (test) {
@@ -58,6 +59,7 @@ exports['get namespace'] = function (test) {
     
     test.equal(element.tag(), "tag");
     test.equal(element.ns(), "ns1");
+    test.equal(element.name(), "ns1:tag");
 };
 
 exports['get xml'] = function (test) {
