@@ -26,12 +26,23 @@ exports['get xml with inner text'] = function (test) {
     test.equal(element.xml(), "<tag>text</tag>");
 };
 
+exports['get text'] = function (test) {
+    var element = elements.element("<tag>text</tag>");
+    
+    test.equal(element.text(), "text");
+};
+
 exports['get xml with inner element'] = function (test) {
     var element = elements.element("<tag><subtag></subtag></tag>");
     
     test.equal(element.xml(), "<tag><subtag></subtag></tag>");
 };
 
+exports['no text with inner element'] = function (test) {
+    var element = elements.element("<tag><subtag></subtag></tag>");
+    
+    test.equal(element.text(), null);
+};
 exports['get uppercase tag'] = function (test) {
     var element = elements.element("<TAG></TAG>");
     
