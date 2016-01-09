@@ -38,7 +38,7 @@ exports['get element with offset'] = function (test) {
     test.equal(element.tag(), "tag2");
 };
 
-exports['invalid tag'] = function (test) {
+exports['invalid tag name'] = function (test) {
     test.throws(
         function () { elements.element("<123></123>"); },
         "Error: Invalid tag name"
@@ -52,3 +52,9 @@ exports['unclosed element'] = function (test) {
     );
 };
 
+exports['invalid element'] = function (test) {
+    test.throws(
+        function () { elements.element("<tag<>"); },
+        "Error: Invalid element"
+    );
+};
