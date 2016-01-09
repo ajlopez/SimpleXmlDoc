@@ -14,6 +14,12 @@ exports['get tag'] = function (test) {
     test.equal(element.tag(), "tag");
 };
 
+exports['get uppercase tag'] = function (test) {
+    var element = elements.element("<TAG></TAG>");
+    
+    test.equal(element.tag(), "TAG");
+};
+
 exports['get tag from element with spaces'] = function (test) {
     var element = elements.element(" <tag ></tag>");
     
