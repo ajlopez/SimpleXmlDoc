@@ -44,6 +44,15 @@ exports['two elements'] = function (test) {
     test.equal(elem2.text(), "text 2");
 };
 
+exports['each over two elements'] = function (test) {
+    var element = elements.element("<tag><subtag>text 1</subtag><subtag>text 2</subtag></tag>");
+    var result = '';
+    
+    element.elements().each(function (elem) { result += elem.text(); });
+    
+    test.equal(result, 'text 1text 2');
+};
+
 exports['get namespace'] = function (test) {
     var element = elements.element("<ns1:tag></ns1:tag>");
     
