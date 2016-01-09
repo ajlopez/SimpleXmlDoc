@@ -26,6 +26,24 @@ exports['one element'] = function (test) {
     test.equal(element.elements().count(), 1);
 };
 
+exports['two elements'] = function (test) {
+    var element = elements.element("<tag><subtag>text 1</subtag><subtag>text 2</subtag></tag>");
+    
+    test.equal(element.elements().count(), 2);
+    
+    var elem1 = element.elements().get(0);
+    
+    test.ok(elem1);
+    test.equal(elem1.tag(), "subtag");
+    test.equal(elem1.text(), "text 1");
+    
+    var elem2 = element.elements().get(1);
+    
+    test.ok(elem2);
+    test.equal(elem2.tag(), "subtag");
+    test.equal(elem2.text(), "text 2");
+};
+
 exports['get namespace'] = function (test) {
     var element = elements.element("<ns1:tag></ns1:tag>");
     
