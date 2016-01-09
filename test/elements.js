@@ -45,3 +45,10 @@ exports['invalid tag'] = function (test) {
     );
 };
 
+exports['unclosed element'] = function (test) {
+    test.throws(
+        function () { elements.element("<tag"); },
+        "Error: Unclosed element"
+    );
+};
+
