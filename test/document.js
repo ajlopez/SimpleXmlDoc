@@ -27,3 +27,9 @@ exports['from string to object'] = function (test) {
     var result = doc.toObject({ camelize: true });
     test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
 };
+
+exports['from string to document to string'] = function (test) {
+    var doc = sxmld.fromString('<Person><Name>Adam</Name><Age>800</Age></Person>');
+    var result = doc.toString();
+    test.equal(result, '<Person><Name>Adam</Name><Age>800</Age></Person>');
+};
