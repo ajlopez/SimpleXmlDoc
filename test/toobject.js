@@ -25,3 +25,14 @@ exports['persons as array'] = function (test) {
     test.deepEqual(result, { persons: [ { name: 'Adam', age: '800' } ] });
 }
 
+exports['person with capitalized names'] = function (test) {
+    var element = elements.element("<Person><Name>Adam</Name><Age>800</Age></Person>");
+    var result = element.toObject();
+    test.deepEqual(result, { Person: { Name: 'Adam', Age: '800' } });
+}
+
+exports['person with capitalized names converted to camel'] = function (test) {
+    var element = elements.element("<Person><Name>Adam</Name><Age>800</Age></Person>");
+    var result = element.toObject({ camelize: true });
+    test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
+}

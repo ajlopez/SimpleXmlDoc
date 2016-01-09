@@ -105,6 +105,12 @@ exports['get text'] = function (test) {
     test.equal(element.text(), "text");
 };
 
+exports['get text with capitalized tag'] = function (test) {
+    var element = elements.element("<Tag>text</Tag>");
+    
+    test.equal(element.text(), "text");
+};
+
 exports['get xml with inner element'] = function (test) {
     var element = elements.element("<tag><subtag></subtag></tag>");
     
