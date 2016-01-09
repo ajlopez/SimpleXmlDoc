@@ -13,3 +13,10 @@ exports['person'] = function (test) {
     test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
 }
 
+exports['persons'] = function (test) {
+    var element = elements.element("<persons><person><name>Adam</name><age>800</age></person></persons>");
+    var result = element.toObject();
+    test.deepEqual(result, { persons: { person: { name: 'Adam', age: '800' } } });
+}
+
+
