@@ -20,6 +20,12 @@ exports['get xml'] = function (test) {
     test.equal(element.xml(), "<tag></tag>");
 };
 
+exports['get xml with inner text'] = function (test) {
+    var element = elements.element("<tag>text</tag>");
+    
+    test.equal(element.xml(), "<tag>text</tag>");
+};
+
 exports['get uppercase tag'] = function (test) {
     var element = elements.element("<TAG></TAG>");
     
