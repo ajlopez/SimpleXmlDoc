@@ -19,4 +19,9 @@ exports['persons'] = function (test) {
     test.deepEqual(result, { persons: { person: { name: 'Adam', age: '800' } } });
 }
 
+exports['persons as array'] = function (test) {
+    var element = elements.element("<persons><person><name>Adam</name><age>800</age></person></persons>");
+    var result = element.toObject({ array: 'persons' });
+    test.deepEqual(result, { persons: [ { name: 'Adam', age: '800' } ] });
+}
 
