@@ -14,6 +14,18 @@ exports['get tag'] = function (test) {
     test.equal(element.tag(), "tag");
 };
 
+exports['no elements'] = function (test) {
+    var element = elements.element("<tag></tag>");
+    
+    test.equal(element.elements().count(), 0);
+};
+
+exports['one element'] = function (test) {
+    var element = elements.element("<tag><subtag></subtag></tag>");
+    
+    test.equal(element.elements().count(), 1);
+};
+
 exports['get namespace'] = function (test) {
     var element = elements.element("<ns1:tag></ns1:tag>");
     
