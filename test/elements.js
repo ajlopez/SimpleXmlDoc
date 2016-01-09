@@ -14,6 +14,13 @@ exports['get tag'] = function (test) {
     test.equal(element.tag(), "tag");
 };
 
+exports['get namespace'] = function (test) {
+    var element = elements.element("<ns1:tag></ns1:tag>");
+    
+    test.equal(element.tag(), "tag");
+    test.equal(element.ns(), "ns1");
+};
+
 exports['get xml'] = function (test) {
     var element = elements.element("<tag></tag>");
     
