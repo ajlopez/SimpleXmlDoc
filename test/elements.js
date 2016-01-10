@@ -8,6 +8,16 @@ exports['get element'] = function (test) {
     test.equal(typeof element, 'object');
 };
 
+exports['get element with namespace'] = function (test) {
+    var element = elements.element("<ns:tag></ns:tag>");
+    
+    test.ok(element);
+    test.equal(typeof element, 'object');
+    test.equal(element.ns(), 'ns');
+    test.equal(element.tag(), 'tag');
+    test.equal(element.name(), 'ns:tag');
+};
+
 exports['get tag and name'] = function (test) {
     var element = elements.element("<tag></tag>");
     
@@ -79,14 +89,6 @@ exports['each over two elements'] = function (test) {
     test.equal(result, 'text 1text 2');
 };
 
-exports['get namespace'] = function (test) {
-    var element = elements.element("<ns1:tag></ns1:tag>");
-    
-    test.equal(element.tag(), "tag");
-    test.equal(element.ns(), "ns1");
-    test.equal(element.name(), "ns1:tag");
-};
-
 exports['get xml'] = function (test) {
     var element = elements.element("<tag></tag>");
     
@@ -144,6 +146,20 @@ exports['invalid tag name'] = function (test) {
     test.throws(
         function () { elements.element("<123></123>"); },
         "Error: Invalid tag name"
+    );
+};
+
+exports['invalid close tag name'] = function (test) {
+    test.throws(
+        function () { elements.element("<tag></teg>"); },
+        "Error: Unclosed element"
+    );
+};
+
+exports['invalid close tag name with namespace'] = function (test) {
+    test.throws(
+        function () { elements.element("<ns:tag></ns2:tag>"); },
+        "Error: Unclosed element"
     );
 };
 
