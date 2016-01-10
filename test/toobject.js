@@ -42,3 +42,9 @@ exports['person with capitalized names converted to camel'] = function (test) {
     var result = element.toObject({ camelize: true });
     test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
 }
+
+exports['person with capitalized names converted to camel using namespace'] = function (test) {
+    var element = elements.element("<ns1:Person><Name>Adam</Name><Age>800</Age></ns1:Person>");
+    var result = element.toObject({ camelize: true });
+    test.deepEqual(result, { "ns1:person": { name: 'Adam', age: '800' } });
+}
