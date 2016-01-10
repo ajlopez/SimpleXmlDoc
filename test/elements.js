@@ -8,6 +8,15 @@ exports['get element'] = function (test) {
     test.equal(typeof element, 'object');
 };
 
+exports['get autoclose element'] = function (test) {
+    var element = elements.element("<tag/>");
+    
+    test.ok(element);
+    test.equal(typeof element, 'object');
+    test.equal(element.elements().count(), 0);
+    test.equal(element.text(), '');
+};
+
 exports['get element with namespace'] = function (test) {
     var element = elements.element("<ns:tag></ns:tag>");
     
