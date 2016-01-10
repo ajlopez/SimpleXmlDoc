@@ -40,3 +40,9 @@ exports['from object to document to string'] = function (test) {
     test.equal(result, '<person><name>Adam</name><age>800</age></person>');
 };
 
+exports['from object to document to string with null value'] = function (test) {
+    var doc = sxmld.fromObject({ person: { name: 'Adam', age: '800', notes: null } });
+    var result = doc.toString();
+    test.equal(result, '<person><name>Adam</name><age>800</age><notes/></person>');
+};
+
