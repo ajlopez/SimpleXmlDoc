@@ -52,3 +52,9 @@ exports['from object to document to string using capitalize'] = function (test) 
     test.equal(result, '<Person><Name>Adam</Name><Age>800</Age></Person>');
 };
 
+exports['from object to document to string using array'] = function (test) {
+    var doc = sxmld.fromObject({ persons: [ { name: 'Adam', age: '800' } ] }, { array: { persons: 'person' } });
+    var result = doc.toString();
+    test.equal(result, '<persons><person><name>Adam</name><age>800</age><notes/></person></persons>');
+};
+
