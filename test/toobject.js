@@ -13,6 +13,18 @@ exports['person'] = function (test) {
     test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
 }
 
+exports['person with spaces in values'] = function (test) {
+    var element = elements.element("<person><name>  Adam  </name><age> 800 </age></person>");
+    var result = element.toObject();
+    test.deepEqual(result, { person: { name: '  Adam  ', age: ' 800 ' } });
+}
+
+exports['person with removed spaces in values'] = function (test) {
+    var element = elements.element("<person><name>  Adam  </name><age> 800 </age></person>");
+    var result = element.toObject({ trimmed: true });
+    test.deepEqual(result, { person: { name: 'Adam', age: '800' } });
+}
+
 exports['person with namespace'] = function (test) {
     var element = elements.element("<ns1:person><name>Adam</name><age>800</age></ns1:person>");
     var result = element.toObject();
