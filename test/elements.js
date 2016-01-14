@@ -116,6 +116,12 @@ exports['get text'] = function (test) {
     test.equal(element.text(), "text");
 };
 
+exports['get text with special characters'] = function (test) {
+    var element = elements.element("<tag>0&lt;1&gt;2 0&lt;1&gt;2</tag>");
+    
+    test.equal(element.text(), "0<1>2 0<1>2");
+};
+
 exports['get text with capitalized tag'] = function (test) {
     var element = elements.element("<Tag>text</Tag>");
     
