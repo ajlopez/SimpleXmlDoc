@@ -61,6 +61,12 @@ exports['from object to document to string'] = function (test) {
     test.equal(result, '<?xml version="1.0" encoding="UTF-8"?><person><name>Adam</name><age>800</age></person>');
 };
 
+exports['from object to document to string with special characters'] = function (test) {
+    var doc = sxmld.fromObject({ person: { name: 'Adam', age: '800', note: '1<>2<>3' } });
+    var result = doc.toString();
+    test.equal(result, '<?xml version="1.0" encoding="UTF-8"?><person><name>Adam</name><age>800</age><note>1&lt;&gt;2&lt;&gt;3</note></person>');
+};
+
 exports['from object to document to string with null value'] = function (test) {
     var doc = sxmld.fromObject({ person: { name: 'Adam', age: '800', notes: null } });
     var result = doc.toString();
