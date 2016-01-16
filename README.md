@@ -36,7 +36,7 @@ TBD
 
 ## Versions
 
-TBD
+- 0.0.6, published
 
 ## Contribution
 
