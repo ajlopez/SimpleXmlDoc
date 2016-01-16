@@ -85,3 +85,8 @@ exports['from object to document to string using array'] = function (test) {
     test.equal(result, '<?xml version="1.0" encoding="UTF-8"?><persons><person><name>Adam</name><age>800</age></person></persons>');
 };
 
+exports['from object to document to string using attributes'] = function (test) {
+    var doc = sxmld.fromObject({ person: { name: 'Adam', age: '800', $attrs: { xmlns: 'xmlns1', status: 'OK' } } });
+    var result = doc.toString();
+    test.equal(result, '<?xml version="1.0" encoding="UTF-8"?><person xmlns="xmlns1" status="OK"><name>Adam</name><age>800</age></person>');
+};
